@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/google_oauth2'
+    if params["auth"] == "twitter"
+      redirect_to '/auth/twitter'
+    else
+      redirect_to '/auth/google_oauth2'
+    end
   end
 
   def create
@@ -9,8 +13,12 @@ class SessionsController < ApplicationController
     user = User.where(:provider => auth['provider'],
                       :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
     reset_session
-    session[:user_id] = user.id
-    redirect_to root_url, :notice => 'Signed in!'
+    if user
+      session[:user_id] = user.id
+      redirect_to root_url, :notice => 'Signed in!'
+    else
+      redirect_to root_url, :notice => 'mooock!'
+    end
   end
 
   def destroy

@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 gem 'simple_form'
 gem 'thin'
 group :development do
@@ -25,6 +26,7 @@ group :development do
 end
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
 end
 group :production do
   gem 'pg'
