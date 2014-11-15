@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
+//= require ./lib/modernizr.custom.70736.js
+//= require ./lib/jquery.masonry.min.js
+//= require ./lib/jquery.history.js
+//= require ./lib/js-url.min.js
+//= require ./lib/jquerypp.custom.js
+
+//= require ./lib/gamma.js

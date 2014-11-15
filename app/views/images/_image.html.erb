@@ -1,0 +1,14 @@
+<li>
+  <div data-alt="<%= image.title %>" data-description="<h3><%= image.title %></h3>" data-max-width="1800" data-max-height="1350">
+    <div data-src="<%= image.image(:xxxlarge) %>" data-min-width="1300"></div>
+    <div data-src="<%= image.image(:xxlarge) %>" data-min-width="1000"></div>
+    <div data-src="<%= image.image(:xlarge) %>" data-min-width="700"></div>
+    <div data-src="<%= image.image(:large) %>" data-min-width="300"></div>
+    <div data-src="<%= image.image(:medium) %>" data-min-width="200"></div>
+    <div data-src="<%= image.image(:small) %>" data-min-width="140"></div>
+    <div data-src="<%= image.image(:xsmall) %>"></div>
+    <noscript>
+      <img src="<%= image.image(:xsmall) %>" alt="<%= image.title %>"/>
+    </noscript>
+  </div>
+</li>

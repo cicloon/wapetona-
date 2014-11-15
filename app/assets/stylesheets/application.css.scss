@@ -12,4 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require ./lib/style.css
+ *= require ./lib/noJS.css
+ *= require ./lib/demo.css
  */
