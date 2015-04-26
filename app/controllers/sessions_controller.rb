@@ -1,17 +1,12 @@
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   def new
-    if params["auth"] == "twitter"
-      redirect_to '/auth/twitter'
-    else
-      redirect_to '/auth/google_oauth2'
-    end
+    redirect_to "/auth/#{params["auth"]}" if session_manager.provider_for(params["auth"])
   end
 
   def create
-    auth = request.env["omniauth.auth"]
-    user = User.where(:provider => auth['provider'],
-                      :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
+    user = session_manager.find_or_create_from_auth_hash(request.env["omniauth.auth"])
     reset_session
     if user
       session[:user_id] = user.id
@@ -30,4 +25,9 @@ class SessionsController < ApplicationController
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
 
+  private
+
+  def session_manager
+    BaseStrategy.new(User)
+  end
 end

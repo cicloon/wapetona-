@@ -1,0 +1,7 @@
+- if user_signed_in?
+  %li= link_to 'Sign out', signout_path
+- else
+  - BaseStrategy.providers.each do |name, provider|
+    %li= link_to "Sign in with #{provider.friendly_name}", signin_path(auth: name)
+- if user_signed_in?
+  %li= link_to 'Users', users_path
