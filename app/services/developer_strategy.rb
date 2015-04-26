@@ -10,4 +10,8 @@ class DeveloperStrategy < BaseStrategy
   def friendly_name
     "developer"
   end
+
+  def to_path
+    "developer"
+  end
 end

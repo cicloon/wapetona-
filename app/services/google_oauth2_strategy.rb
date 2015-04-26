@@ -15,4 +15,8 @@ class GoogleOauth2Strategy < BaseStrategy
   def friendly_name
     "google"
   end
+
+  def to_path
+    "google_oauth2"
+  end
 end

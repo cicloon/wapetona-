@@ -6,4 +6,8 @@ class TwitterStrategy < BaseStrategy
   def friendly_name
     "twitter"
   end
+
+  def to_path
+    "twitter"
+  end
 end

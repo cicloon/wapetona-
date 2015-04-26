@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
 
   def new
-    redirect_to "/auth/#{params["auth"]}" if session_manager.provider_for(params["auth"])
+    provider = session_manager.provider_for(params["auth"])
+    redirect_to "/auth/#{provider.to_path}" if provider
   end
 
   def create
